@@ -71,11 +71,40 @@ only an Intelligent Contract can settle on-chain:
    anyone calls `rule(case-N)` and reads the verdict with
    `get_agreement(case-N)`.
 
+## Verified run (GenLayer Studio)
+
+The full flow was executed end-to-end in GenLayer Studio (full
+consensus mode) on 2026-11-16:
+
+- **Contract (Studio):** `0x007A336BD0B2FBA8EdcF7F465d8d604afe8f136c`
+  — [import in Studio](https://studio.genlayer.com/?import-contract=0x007A336BD0B2FBA8EdcF7F465d8d604afe8f136c)
+- **Case 1 — conforming delivery, disputed.** Escrow 1 GEN →
+  `mark_delivered` → `file_dispute` → `rule()`. The jury fetched the
+  evidence page, found BTC + ETH prices and the sentiment line dated
+  2026-11-16, and ruled **RELEASE** (status `RULED_RELEASE`, summary:
+  “The evidence shows the delivery matches the agreed terms.”).
+  Rule tx: `0x9aea…` (all transactions FINALIZED).
+- **Case 2 — non-conforming delivery, disputed.** Same flow with the
+  stale evidence page (dated 2026-11-02, ETH price and sentiment
+  missing). The jury ruled **REFUND** (status `RULED_REFUND`,
+  summary: “The evidence shows the delivery does not match the agreed
+  terms.”). Rule tx: `0xf507…`.
+
+![Studio run](docs/studio-run.png)
+
+> Implementation note: the jury votes with `strict_eq`, so the leader
+> function returns only enum values (`decision` + `reason_code`). An
+> earlier version that also returned a free-text summary failed to
+> reach consensus — validators worded the summary differently. The
+> human-readable verdict summary is derived deterministically from
+> the reason code.
+
 ## Status
 
 - [x] Intelligent Contract (escrow, delivery, dispute, AI ruling, payout)
 - [x] x402 seller/buyer demo app (402 handshake verified locally)
 - [x] Demo landing page + evidence pages on GitHub Pages
+- [x] Full flow verified in GenLayer Studio (RELEASE + REFUND cases)
 - [ ] Deploy on Bradbury testnet + explorer link
 - [ ] Demo video (≤45 s)
 
