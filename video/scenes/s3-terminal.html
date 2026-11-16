@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+.term { position:absolute; left:64px; right:64px; top:88px; background:#010409; border:1px solid #30363d; border-radius:12px; padding:26px 30px; font-family:'Cascadia Code', Consolas, monospace; font-size:19.5px; line-height:1.55; }
+.term .bar { display:flex; gap:8px; margin-bottom:16px; }
+.dot { width:13px; height:13px; border-radius:50%; }
+</style></head>
+<body>
+<div style="position:absolute; top:30px; left:0; right:0; text-align:center; font-size:25px">The seller's 402 answer points at an <span class="gold">escrow contract</span> — not a wallet</div>
+<div class="term">
+  <div class="bar"><span class="dot" style="background:#f85149"></span><span class="dot" style="background:#d4a017"></span><span class="dot" style="background:#3fb950"></span></div>
+  <div><span class="dim">$</span> GET /premium/report</div>
+  <div><span class="red">HTTP 402</span> <span class="dim">Payment Required</span></div>
+  <div style="margin-top:10px">{<br>
+  &nbsp;&nbsp;"scheme": <span class="green">"escrow"</span>, "network": <span class="green">"genlayer-bradbury"</span>,<br>
+  &nbsp;&nbsp;"asset": <span class="green">"GEN"</span>, "amount": <span class="green">"0.1"</span>,<br>
+  &nbsp;&nbsp;"escrowContract": <span class="green">"Court402 — AgentEscrowCourt"</span>,<br>
+  &nbsp;&nbsp;"terms": <span class="green">"BTC + ETH prices and a sentiment line, dated 2026-11-16"</span>,<br>
+  &nbsp;&nbsp;"evidenceUrl": <span class="green">"https://…/evidence/good-delivery.html"</span><br>
+  }</div>
+</div>
+<div class="footer"><span>⚖️ <b>Internet Court</b></span><span>🧠 <b>GenLayer</b></span><span>💳 <b>x402</b></span></div>
+</body></html>
