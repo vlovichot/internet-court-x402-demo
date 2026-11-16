@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Court402 — Internet Court adjudication for x402 agent payments</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#0d1117; color:#e6edf3; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 64px; }
+  .logos { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px; }
+  .logo { border:1px solid #30363d; border-radius:999px; padding:8px 18px; font-size:15px; letter-spacing:.4px; background:#161b22; }
+  .logo b { color:#7ee787; font-weight:600; }
+  h1 { font-size:44px; margin:0 0 8px; }
+  h1 .accent { color:#d4a017; }
+  .sub { font-size:19px; color:#9da7b1; margin:0 0 36px; line-height:1.5; }
+  h2 { font-size:22px; margin:36px 0 12px; color:#f0f6fc; }
+  ol.flow { font-size:17px; line-height:1.65; padding-left:22px; }
+  ol.flow b { color:#7ee787; }
+  .card { border:1px solid #30363d; border-radius:12px; padding:18px 22px; background:#161b22; margin:14px 0; font-size:16px; line-height:1.6; }
+  .card a { color:#58a6ff; }
+  code { background:#21262d; padding:2px 6px; border-radius:6px; font-size:14px; }
+  .verdict { display:flex; gap:12px; flex-wrap:wrap; }
+  .verdict .card { flex:1; min-width:250px; }
+  .ok { border-color:#238636 !important; }
+  .bad { border-color:#da3633 !important; }
+  footer { margin-top:44px; color:#6e7681; font-size:14px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logos">
+    <span class="logo">⚖️ <b>Internet Court</b></span>
+    <span class="logo">🧠 <b>GenLayer</b></span>
+    <span class="logo">💳 <b>x402</b></span>
+  </div>
+
+  <h1>Court<span class="accent">402</span></h1>
+  <p class="sub">When AI agents pay each other with x402, payment is instant — disputes are not.
+  Court402 escrows the payment in a GenLayer Intelligent Contract and lets the
+  <strong>Internet Court</strong> rule on delivery: the contract fetches the evidence,
+  an AI jury judges it against the agreed terms, and the escrow settles itself.</p>
+
+  <h2>How it works</h2>
+  <ol class="flow">
+    <li><b>402 handshake</b> — the seller answers <code>402 Payment Required</code>, pointing at the escrow contract instead of a direct payment.</li>
+    <li><b>Escrow</b> — the buyer locks GEN with natural-language delivery terms + an evidence URL.</li>
+    <li><b>Delivery</b> — the seller delivers and marks it on-chain.</li>
+    <li><b>Confirm or dispute</b> — the buyer confirms (escrow released) or files a dispute.</li>
+    <li><b>The Court rules</b> — validators fetch the evidence, an LLM jury judges terms vs. delivery, and the contract pays out or refunds automatically.</li>
+  </ol>
+
+  <h2>Live demo evidence</h2>
+  <div class="verdict">
+    <div class="card ok"><strong>Case 1 — conforming delivery</strong><br>
+      Report dated 2026-11-16 with BTC price, ETH price and sentiment.
+      Expected verdict: <strong>RELEASE</strong>.<br>
+      <a href="evidence/good-delivery.html">evidence/good-delivery.html</a></div>
+    <div class="card bad"><strong>Case 2 — non-conforming delivery</strong><br>
+      Stale report (2026-11-02), ETH price and sentiment missing.
+      Expected verdict: <strong>REFUND</strong>.<br>
+      <a href="evidence/bad-delivery.html">evidence/bad-delivery.html</a></div>
+  </div>
+
+  <h2>Run it yourself</h2>
+  <div class="card">
+    Contract: <code>contracts/AgentEscrowCourt.py</code> — import it in
+    <a href="https://studio.genlayer.com/">GenLayer Studio</a>, deploy, then
+    <code>create_agreement</code> → <code>mark_delivered</code> →
+    <code>confirm_delivery</code>, or <code>file_dispute</code> → <code>rule</code>.<br>
+    x402 handshake: <code>python3 app/seller.py</code> + <code>python3 app/buyer.py</code> (stdlib only).<br>
+    Source: <a href="https://github.com/vlovichot/internet-court-x402-demo">github.com/vlovichot/internet-court-x402-demo</a>
+  </div>
+
+  <footer>Built for the GenLayer Portal Builders Working Group mission
+  “Internet Court: Partner Demo Lab”. Testnet demo — GEN amounts are Bradbury testnet tokens.</footer>
+</div>
+</body>
+</html>

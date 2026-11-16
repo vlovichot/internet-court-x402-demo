@@ -54,8 +54,8 @@ only an Intelligent Contract can settle on-chain:
 | Path | What |
 | --- | --- |
 | `contracts/AgentEscrowCourt.py` | The Intelligent Contract (escrow + AI adjudication) |
-| `app/` | x402 seller mock + buyer script + demo UI *(in progress)* |
-| `docs/` | Architecture notes, logos, screenshots |
+| `app/` | x402 seller mock (`seller.py`) + buyer walkthrough (`buyer.py`), stdlib only |
+| `docs/` | Demo landing page + delivery evidence pages (served via GitHub Pages) |
 | `video/` | The ≤45 s demo video and its build script *(in progress)* |
 
 ## Try it in GenLayer Studio
@@ -74,8 +74,9 @@ only an Intelligent Contract can settle on-chain:
 ## Status
 
 - [x] Intelligent Contract (escrow, delivery, dispute, AI ruling, payout)
+- [x] x402 seller/buyer demo app (402 handshake verified locally)
+- [x] Demo landing page + evidence pages on GitHub Pages
 - [ ] Deploy on Bradbury testnet + explorer link
-- [ ] x402 seller/buyer demo app + web UI
 - [ ] Demo video (≤45 s)
 
 ## License
